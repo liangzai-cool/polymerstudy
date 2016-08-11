@@ -1,0 +1,24 @@
+{
+  "name": "self-polymer-app",
+  "authors": [
+    "liangzai_cool <liangzai_cool@yeah.net>"
+  ],
+  "description": "自己手工搭建的 Polymer 示例项目",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "polymer": "polymer/polymer",
+    "iron-pages":"PolymerElements/iron-pages",
+    "app-route":"PolymerElements/app-route",
+    "iron-pages":"PolymerElements/iron-pages",
+    "iron-selector":"PolymerElements/iron-selector"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

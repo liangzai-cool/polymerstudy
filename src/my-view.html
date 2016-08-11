@@ -1,0 +1,58 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/app-route/app-location.html">
+<link rel="import" href="/bower_components/app-route/app-route.html">
+<link rel="import" href="/bower_components/iron-pages/iron-pages.html">
+<dom-module id="my-view">
+  <template>
+    <style>
+      /* 样式 */
+      div {
+        background-color: #ccc;
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route route="{{route}}" 
+               pattern="/:p"
+               data="{{routeData}}"
+               tail="{{tail}}">
+    </app-route>
+
+    <!-- html代码 -->
+    <div>这是一个DIV，背景是灰色</div>
+    <a href="/">index</a>
+    <a href="/my-view-1">my-view-1</a>
+    <a href="/my-view-2">my-view-2</a>
+    <a href="/my-view-3">my-view-3</a>
+
+    <hr>
+    页面
+    <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+      <my-view-1 name="my-view-1"></my-view-1>
+      <my-view-2 name="my-view-2"></my-view-2>
+      <my-view-3 name="my-view-3"></my-view-3>
+    </iron-pages>
+  </template>
+    <script>
+      /* js代码 */
+
+      // element registration
+      Polymer({
+        is: 'my-view',
+        properties: {
+          page: {
+            type: String,
+            observer: '_pageChanged'
+          }
+        },
+        observers: ['_RouteDataChanged(routeData.p)'],
+        _RouteDataChanged: function(p) {
+          this.page = p || 'my-view-1';
+        },
+        _pageChanged: function(page) {
+          console.info(`page: ${page}`);
+          this.importHref('/src/' + this.page + '.html', null, null, true);
+        }
+      });
+    </script>
+</dom-module>
