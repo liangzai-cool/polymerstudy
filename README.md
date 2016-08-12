@@ -1,5 +1,5 @@
 # PolymerStudy
-A simple for studying polymer.
+A simple demo for studying polymer.
 # Dependencies
 - [Node](https://nodejs.org/)
 
